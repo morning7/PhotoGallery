@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.karson.photogallery">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <permission android:name="com.karson.photogallery.PRIVATE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.karson.photogallery.PRIVATE"/>
+
+    <application
+        android:name="com.karson.GalleryApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <activity
+            android:name=".PhotoGalleryActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".PhotoPageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <receiver android:name="com.karson.receiver.NotificationReceiver"
+            android:permission="com.karson.photogallery.PRIVATE"
+            android:exported="false">
+            <intent-filter android:priority="-999">
+                <action android:name="com.karson.photogallery.NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
